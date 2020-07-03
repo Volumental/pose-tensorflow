@@ -1,0 +1,12 @@
+dataset_type: "mpii"
+
+num_joints: 6
+all_joints: [[0], [1], [2], [3], [4], [5]]
+all_joints_names: ['arch_point', 'heel', 'instep', 'toe', 'width_lateral', 'width_medial']
+
+global_scale: 1.0
+init_weights: ../models/volumental/train/snapshot-1030000
+location_refinement: true
+locref_stdev: 7.2801
+net_type: resnet_101
+scoremap_dir: test

@@ -117,7 +117,7 @@ class PoseDataset:
             item.im_path = sample[0][0]
             item.im_size = sample[1][0]
             if len(sample) >= 3:
-                joints = sample[2][0][0]
+                joints = sample[2]
                 joint_id = joints[:, 0]
                 # make sure joint ids are 0-indexed
                 if joint_id.size != 0:

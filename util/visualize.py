@@ -3,7 +3,7 @@ import math
 import numpy as np
 from scipy.misc import imresize
 import matplotlib
-matplotlib.use('TkAgg')
+#matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
@@ -48,13 +48,13 @@ def visualize_joints(image, pose):
     return visim
 
 
-def show_heatmaps(cfg, img, scmap, pose, cmap="jet"):
+def show_heatmaps(cfg, img, scmap, pose, cmap="jet", figsize=(10, 10)):
     interp = "bilinear"
     all_joints = cfg.all_joints
     all_joints_names = cfg.all_joints_names
     subplot_width = 3
     subplot_height = math.ceil((len(all_joints) + 1) / subplot_width)
-    f, axarr = plt.subplots(subplot_height, subplot_width)
+    f, axarr = plt.subplots(subplot_height, subplot_width, figsize=figsize)
     for pidx, part in enumerate(all_joints):
         plot_j = (pidx + 1) // subplot_width
         plot_i = (pidx + 1) % subplot_width
@@ -70,8 +70,9 @@ def show_heatmaps(cfg, img, scmap, pose, cmap="jet"):
     curr_plot = axarr[0, 0]
     curr_plot.set_title('Pose')
     curr_plot.axis('off')
-    curr_plot.imshow(visualize_joints(img, pose))
-
+    #curr_plot.imshow(visualize_joints(img, pose))
+    curr_plot.imshow(img)
+    curr_plot.scatter(pose[:, 0], pose[:, 1], c='orange')
     plt.show()
 
 def show_arrows(cfg, img, pose, arrows):
